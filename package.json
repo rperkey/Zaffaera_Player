@@ -1,7 +1,7 @@
 {
-  "name": "zac",
+  "name": "zaffaera",
   "version": "1.0.0",
-  "description": "An attack calculator for D&D homebrew known as Zaffaera.",
+  "description": "Various tools for a homebrew D&D campaign known as Zaffaera.",
   "main": "src/app.js",
   "scripts": {
     "build": "webpack --config src/config/webpack.config.js",
