@@ -17,7 +17,6 @@ Vue.use(VueMeta, {
 Vue.use(VueMaterial)
 
 const router = new VueRouter({
-  mode: 'history',
   routes: [
     {
       path: '/',
