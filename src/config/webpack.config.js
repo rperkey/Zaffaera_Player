@@ -24,7 +24,7 @@ module.exports = {
   output: {
     path: config.dist,
     filename: 'js/main.js',
-    publicPath: '/'
+    publicPath: 'dist'
   },
   devtool: config.env === 'development' ? '#source-map' : false,
   devServer: {
