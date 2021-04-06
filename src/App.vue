@@ -1,39 +1,56 @@
 <template>
-  <div id="main-wrapper" class="page-container">
-    <md-app md-mode="reveal">
-      <md-app-toolbar class="md-primary">
-        <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <span class="md-title">Zaffaera Players Tools</span>
-      </md-app-toolbar>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <div class="d-flex align-center">
+        <v-toolbar-title>Zaffaera Players Tools</v-toolbar-title>
+      </div>
+    </v-app-bar>
 
-      <md-app-drawer :md-active.sync="menuVisible">
-        <md-toolbar class="md-transparent" md-elevation="0">
-          <span class="md-title">Zaffaera Players Tools</span>
-        </md-toolbar>
-        <md-divider />
-        <Navigation />
-      </md-app-drawer>
+    <v-main>
+      <v-container>
+        <v-expansion-panels focusable>
+          <v-expansion-panel>
+            <v-expansion-panel-header>Number of Attacks Calculator</v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <attacks-calculator />
+            </v-expansion-panel-content>
+          </v-expansion-panel>
 
-      <md-app-content>
-        <router-view />
-      </md-app-content>
-    </md-app>
-  </div>
+          <v-expansion-panel>
+            <v-expansion-panel-header>Health and Vitality Calculator</v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <health-calculator />
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import Navigation from '@/components/Navigation'
+import AttacksCalculator from '@/components/AttacksCalculator'
+import HealthCalculator from '@/components/HealthCalculator'
 
 export default {
   name: 'App',
-  metaInfo: {
-    titleTemplate: '%s | Zaffaera Players Tools'
+  components: {
+    AttacksCalculator,
+    HealthCalculator
   },
-  components: { Navigation },
   data: () => ({
-    menuVisible: false
+    items: [
+      { title: 'Home' },
+      { title: 'About' }
+    ],
+    drawer: false,
+    group: null
   })
 }
 </script>
+
+<style lang="scss">
+.v-expansion-panel-header {
+  font-weight: bold;
+}
+</style>
