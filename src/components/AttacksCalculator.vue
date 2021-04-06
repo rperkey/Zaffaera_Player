@@ -138,7 +138,7 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in numAttacks" :key="index">
-                <td>+{{ item[0] }}</td>
+                <td>{{ item[0] }}</td>
                 <td v-show="weapons.hasOffhand">{{ item[1] }}</td>
               </tr>
             </tbody>
@@ -188,7 +188,7 @@ export default {
       const boolean = this.weapons.hasOffhand
 
       for (let i = mhStart; i >= 0; i = i - mhSpeed) {
-        attacks.push([i, '--'])
+        attacks.push([`+${i}`, '--'])
       }
 
       let counter = 0
@@ -196,7 +196,11 @@ export default {
         i = i - counter
         if (i >= 0) {
           if (boolean) {
-            attacks[counter][1] = i
+            if (counter in attacks) {
+              attacks[counter][1] = `+${i}`
+            } else {
+              attacks.push(['--', `+${i}`])
+            }
           }
         }
         counter++

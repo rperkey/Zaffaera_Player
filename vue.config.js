@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: 'dist',
+  publicPath: process.env.NODE_ENV === 'production' ? 'dist' : '/',
   indexPath: path.join(__dirname, 'index.html'),
   configureWebpack: {
     resolve: {
