@@ -48,7 +48,7 @@
         ></v-slider>
 
         <v-slider
-          v-model="weapons.mh.echant"
+          v-model="weapons.mh.enchant"
           :max="5"
           :min="0"
           label="Enchantment Bonus"
@@ -95,7 +95,7 @@
 
             <v-expand-transition>
             <v-slider
-              v-model="weapons.oh.echant"
+              v-model="weapons.oh.enchant"
               :max="5"
               :min="0"
               label="Enchantment Bonus"
