@@ -181,14 +181,14 @@ export default {
   computed: {
     numAttacks () {
       const attacks = []
-      const mhStart = this.stats.profBonus + this.stats.abilityMod + this.weapons.mh.enchant
-      const ohStart = this.stats.profBonus + this.stats.abilityMod + this.weapons.oh.enchant
+      const mhStart = this.stats.profBonus + this.stats.abilityMod
+      const ohStart = this.stats.profBonus + this.stats.abilityMod
       const mhSpeed = this.weapons.mh.speed
       const ohSpeed = this.weapons.oh.speed
       const boolean = this.weapons.hasOffhand
 
       for (let i = mhStart; i >= 0; i = i - mhSpeed) {
-        attacks.push([`+${i}`, '--'])
+        attacks.push([`+${i + this.weapons.mh.enchant}`, '--'])
       }
 
       let counter = 0
@@ -197,9 +197,9 @@ export default {
         if (i >= 0) {
           if (boolean) {
             if (counter in attacks) {
-              attacks[counter][1] = `+${i}`
+              attacks[counter][1] = `+${i + this.weapons.oh.enchant}`
             } else {
-              attacks.push(['--', `+${i}`])
+              attacks.push(['--', `+${i + this.weapons.oh.enchant}`])
             }
           }
         }
